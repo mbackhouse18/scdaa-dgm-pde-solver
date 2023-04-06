@@ -132,6 +132,6 @@ class LQRSolver:
             S_r = self.riccati_solver(time_grid)[1] 
             S_t = torch.from_numpy(S_r[0].copy()).double() 
             # The product is 2*1, need to flatten it first before appending the value to a_star
-            a_star[i] = -torch.flatten(torch.linalg.multi_dot([self.D,self.M.t(),S_t,x[i].t()])) 
+            a_star[i] = -torch.flatten(torch.linalg.multi_dot([self.D.t(),self.M.t(),S_t,x[i].t()])) 
             
         return a_star

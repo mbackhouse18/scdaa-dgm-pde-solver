@@ -55,8 +55,7 @@ lqr_equation = LQRSolver(H, M, D, C, R, sigma, T)
 # n=500 is predefined in this method, no need to generate the time grid
 
 value_funs = lqr_equation.value_function(t0,x)
-print(value_funs)
-print(value_funs.shape)
+print(f"Value Function: {value_funs}")
 
 #######################################################################################
 # Testing the method optimal_control
@@ -65,43 +64,7 @@ print(value_funs.shape)
 # n=500 is predefined in this method, no need to generate the time grid
 
 optimal_control = lqr_equation.optimal_control(t0,x)
-print(optimal_control)
-print(optimal_control.shape)
+print(f"Optimal Control: {optimal_control}")
 
 
 
-
-
-
-
-
-# x = torch.tensor([[[1,2]],
-#                   [[3,4]],
-#                   [[5,6]]])
-# t = torch.tensor([0,10])
-
-# print(5*t)
-
-
-# # # create an 3 D tensor with 8 elements each
-# # a = torch.tensor([[[1, 2, 3, 4, 5, 6, 7, 8], 
-# #                    [10, 11, 12, 13, 14, 15, 16, 17]], 
-# #                   [[71, 72, 73, 74, 75, 76, 77, 78], 
-# #                    [81, 82, 83, 84, 85, 86, 87, 88]]])
-  
-# # # display actual  tensor
-# # print(a)
-  
-# # # access  all the tensors of 1  dimension 
-# # # and get only 7 values in that dimension
-# # print(a[0:1, 0:1, :7])
-
-
-#time_grid = torch.linspace(t0[2].item(), T, 1000) # generate the time grid on [t,T]
-#S_r = lqr_equation.riccati_solver(time_grid)[1] 
-#S_t = torch.from_numpy(S_r[0].copy()).double() 
-#print(S_t)
-#c = -torch.flatten(torch.linalg.multi_dot([D,M.t(),S_t,x[2].t()])) 
-#print(c)
-#print(x[2].t())
-#print(torch.linalg.multi_dot([D,M.t(),S_t]))

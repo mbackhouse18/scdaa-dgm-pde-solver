@@ -15,8 +15,8 @@ R = torch.tensor([[1.0,0],[0,1.0]])
 sigma = torch.tensor([0.05, 0.05])
 
 # Set the batch size and the number of epochs
-n_epochs = 200
-batch_size = 10000
+n_epochs = 150
+batch_size = 30
 
 # Create data t and x as defined in exercise 2.1
 T = 1.0
@@ -63,21 +63,26 @@ prediction = model(t0,x0).detach().numpy()
 true_v = value_funs.detach().numpy()
 x_axis = np.linspace(0,batch_size, num=batch_size)
 
-fig, axes = plt.subplots(2, figsize=(8, 7))
+fig, axes = plt.subplots(3, figsize=(8, 7))
 
-# Plot the loss
 axes[0].plot(loss_list, label='Mean-Squared Error')
-axes[0].set_title("Mean-Squared Error Loss Function")
+axes[0].set_title(f"Mean-Squared Error Log Loss Function, Batch Size = {batch_size}")
 axes[0].set_xlabel("Number of Epochs")
-axes[0].set_ylabel("Loss")
+axes[0].set_ylabel("log Loss")
+axes[0].set_yscale("log")
+
+axes[1].plot(loss_list, label='Mean-Squared Error')
+axes[1].set_title(f"Mean-Squared Error Loss Function, Batch Size = {batch_size}")
+axes[1].set_xlabel("Number of Epochs")
+axes[1].set_ylabel("Loss")
 
 # Plot the true and predicted values
-axes[1].scatter(x_axis, prediction, label='Predicted')
-axes[1].scatter(x_axis, true_v, label='True')
-axes[1].set_title("Predicted vs. True Value")
-axes[1].set_xlabel("Batch")
-axes[1].set_ylabel("Value")
-axes[1].legend()
+axes[2].scatter(x_axis, prediction, label='Predicted')
+axes[2].scatter(x_axis, true_v, label='True')
+axes[2].set_title("Predicted vs. True Value")
+axes[2].set_xlabel("Batch")
+axes[2].set_ylabel("Value")
+axes[2].legend()
 
 fig.tight_layout()
 plt.show()

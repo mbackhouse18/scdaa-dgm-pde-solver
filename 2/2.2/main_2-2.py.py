@@ -15,8 +15,8 @@ R = torch.tensor([[1.0,0],[0,1.0]])
 sigma = torch.tensor([0.05, 0.05])
 
 # Set the batch size and the number of epochs
-n_epochs = 100
-batch_size = 10
+n_epochs = 150
+batch_size = 30
 
 # Create data t and x as defined in exercise 2.1
 T = 1.0
