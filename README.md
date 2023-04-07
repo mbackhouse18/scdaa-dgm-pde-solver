@@ -4,25 +4,19 @@
 
 A numerical algorithm for solving stochastic control problems using policy iteration combined with the “deep Galerkin method” (DGM) for solving a linear PDE. 
 
-## Environment Setup
+## Clone
 
-To set up the environment, you can follow these steps:
-1. Clone the repository from GitHub:
+Clone the repository from GitHub:
 sh
-git clone https://github.com/xxxxx
-
-
-2. Install the dependencies using environment.yaml:
-sh
-conda env create -f environment.yaml
-
-
-3. Activate the environment:
-sh
-conda activate --
+git clone https://github.com/mbackhouse18/scdaa-dgm-pde-solver
 
 
 ## Usage
-Need to tell them how to run it
+
+Each exercise is contained within a folder with the respective section of the SCDAA Coursework.
+Within each folder (1,2,3 or 4), run the main_i-j.py file, where i = 1,2,3,4 and j = 1,2.
+
+For example, to run exercise 2.1, run the file main_2-1.py within the folder 2 within the folder 2.1.
+The same logic follows for each exercise.
 
 
