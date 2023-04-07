@@ -63,6 +63,22 @@ prediction = model(t0,x0).detach().numpy()
 true_v = value_funs.detach().numpy()
 x_axis = np.linspace(0,batch_size, num=batch_size)
 
+t0 = torch.tensor([[0.5]])
+x0 = torch.tensor([[0.8, -1.2]])
+
+t = torch.tensor([0.5])
+x = torch.tensor([[[0.8, -1.2]]])
+
+value_pred = model(t0, x0)
+value_true = lqr_equation.value_function(t, x)
+
+print(value_pred)
+print(value_true)
+
+loss_func = torch.nn.MSELoss()
+
+print(f"MSE for test: {loss_func(value_pred, value_true)}")
+
 fig, axes = plt.subplots(3, figsize=(8, 7))
 
 axes[0].plot(loss_list, label='Mean-Squared Error')

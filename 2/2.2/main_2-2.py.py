@@ -64,22 +64,46 @@ prediction = model(tx).detach().numpy()
 true_con = opt_control.detach().numpy()
 x_axis = np.linspace(0,batch_size, num=batch_size)
 
-fig, axes = plt.subplots(3, figsize=(10, 7))
+tx_test = torch.tensor([[0.2, 1.3, -0.1]])
+t = torch.tensor([0.2])
+x = torch.tensor([[[1.3, -0.1]]])
+prediction_con = model(tx_test)
+control_actual = lqr_equation.optimal_control(t, x)
+
+print(prediction_con)
+print(control_actual)
+
+loss_func = torch.nn.MSELoss()
+
+print(f"MSE Loss: {loss_func(prediction_con, control_actual)}")
+
+fig, axes = plt.subplots(4, figsize=(10, 7))
 
 # Plot the loss
 axes[0].plot(loss_list, label='Mean-Squared Error')
-axes[0].set_title("Mean-Squared Error Loss Function")
+axes[0].set_title(f"Mean-Squared Error Log Loss Function, Batch Size = {batch_size}")
 axes[0].set_xlabel("Number of Epochs")
-axes[0].set_ylabel("Loss")
+axes[0].set_ylabel("log Loss")
+axes[0].set_yscale("log")
 
-# Plot the predicted vs true values for each dimension of the control
-for i in range(len(prediction[0])):
-    axes[i+1].scatter(x_axis, prediction[:,i], label='Predicted')
-    axes[i+1].scatter(x_axis, true_con[:,i], label='True')
-    axes[i+1].set_title(f"Dimension {i+1}: Predicted vs. True Value")
-    axes[i+1].set_xlabel("Batch")
-    axes[i+1].set_ylabel("Value")
-    axes[i+1].legend(loc='upper right')
+axes[1].plot(loss_list, label='Mean-Squared Error')
+axes[1].set_title("Mean-Squared Error Loss Function")
+axes[1].set_xlabel("Number of Epochs")
+axes[1].set_ylabel("Loss")
+
+axes[2].scatter(x_axis, prediction[:,0], label='Predicted')
+axes[2].scatter(x_axis, true_con[:,0], label='True')
+axes[2].set_title(f"Dimension {1}: Predicted vs. True Value")
+axes[2].set_xlabel("Batch")
+axes[2].set_ylabel("Value")
+axes[2].legend(loc='upper right')
+
+axes[3].scatter(x_axis, prediction[:,1], label='Predicted')
+axes[3].scatter(x_axis, true_con[:,1], label='True')
+axes[3].set_title(f"Dimension {2}: Predicted vs. True Value")
+axes[3].set_xlabel("Batch")
+axes[3].set_ylabel("Value")
+axes[3].legend(loc='upper right')
 
 fig.tight_layout()
 plt.show()

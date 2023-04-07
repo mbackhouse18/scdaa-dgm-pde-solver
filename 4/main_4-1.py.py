@@ -176,6 +176,12 @@ value_actual = lqr_equation.value_function(t, x,).float()
 loss_func = torch.nn.MSELoss()
 print(f"MSE of control alpha: {loss_func(control_prediction, control_actual)}")
 print(f"MSE of control alpha: {loss_func(value_prediction, value_actual)}")
+print()
+
+print(control_actual)
+print(control_prediction)
+print(value_actual)
+print(value_prediction)
 
 v_loss = v_loss.detach().numpy()
 a_loss = a_loss.detach().numpy()
