@@ -139,6 +139,6 @@ class LQRSolver:
             x_i = x[i].reshape(1,-1).t() 
 
             # The product is 2*1, need to flatten it first before appending the value to a_star
-            a_star[i] = -torch.flatten(torch.linalg.multi_dot([self.D,self.M.t(),S_t,x_i])) 
+            a_star[i] = -torch.flatten(torch.linalg.multi_dot([torch.inverse(self.D),self.M.t(),S_t,x_i])) 
             
         return a_star

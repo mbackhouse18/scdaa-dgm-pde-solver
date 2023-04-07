@@ -53,7 +53,7 @@ class Bellman_pde():
     '''
     Approximating the Bellman PDE on [0,T]*[x1_l,x1_r]*[x2_l,x2_r]
     '''
-    def __init__(self, net, x_interval, y_interval, H, M, C, D, R, T, sigma, a):
+    def __init__(self, net, x_interval, y_interval, H, M, C, D, R, T, sigma):
         self.net = net 
         self.x1_l = x_interval[0].item() # torch tensor, dim = 3
         self.x1_r = x_interval[1].item()
@@ -66,7 +66,6 @@ class Bellman_pde():
         self.R = R         
         self.T = T # integer
         self.sigma = sigma # sigma, a: torch tensors, dim = 1*2
-        self.a = a.clone().detach() 
         
     def sample(self, size):
         # Sampling
