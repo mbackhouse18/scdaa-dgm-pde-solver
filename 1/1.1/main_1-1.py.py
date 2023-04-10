@@ -34,8 +34,8 @@ lqr_equation = LQRSolver(H, M, D, C, R, sigma, T)
 # Output: time points 1*n; S(t): 4*n 
 
 # Generate a time gird for testing
-# time_grid_test = np.linspace(0.0,1.0,1000)
-#sol_t, sol_S = lqr_equation.riccati_solver(time_grid_test)
+time_grid_test = np.linspace(0.0,1.0,1000)
+sol_t, sol_S = lqr_equation.riccati_solver(time_grid_test)
 #print(sol_t)
 #print(sol_S)
 #print(len(sol_t))
@@ -45,7 +45,7 @@ lqr_equation = LQRSolver(H, M, D, C, R, sigma, T)
 # Testing the method riccati_plot
 # Output: plot of the solutions
 
-# lqr_equation.riccati_plot(time_grid_test)
+lqr_equation.riccati_plot(time_grid_test)
 
 
 #######################################################################################

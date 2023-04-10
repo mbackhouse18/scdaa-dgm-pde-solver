@@ -102,13 +102,6 @@ for epoch in range(100):
 
     pde_value_pred = pde_value_pred.detach().clone()
 
-    # # Solve the Bellman PDE using the alpha obtained by the prediction above
-    # alpha_pred = alpha_pred.unsqueeze(1).reshape(batch_size,2,1)
-    # Bellman = Bellman_pde(net, x_range, y_range, H, M, C, D, R, T, sigma, alpha_pred)
-    # train = Train(net, Bellman, BATCH_SIZE=batch_size)
-    # train.train(epoch=10, lr=learning_rate)
-    # pde_value_pred = net(tx)
-
     # Update value function based on value obtained from the PDE solution above
     value_model.zero_grad()
     value_loss_fn = nn.MSELoss()
