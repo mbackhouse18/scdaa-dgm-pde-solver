@@ -3,6 +3,7 @@
 Alan Zeng: S2275781  
 Ross Campbell: S1767056  
 Matthew Backhouse: S2248423  
+Equal Contribution: 1/3 for each member
 
 ## Description
 
