@@ -1,5 +1,9 @@
 # SCDAA Coursework 2023
 
+Alan Zeng: S2275781
+Ross Campbell: S1767056
+Matthew Backhouse: S2248423
+
 ## Description
 
 A numerical algorithm for solving stochastic control problems using policy iteration combined with the “deep Galerkin method” (DGM) for solving a linear PDE. 
